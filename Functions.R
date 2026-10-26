@@ -130,3 +130,31 @@ summary6_multi <- function(data, ...) {
 
 results <- mtcars |> summary6_multi(mpg, wt, hp)
 
+### 19.3.1 exercises ####
+f1 <- function(string, prefix) {
+  substr(string, 1, nchar(prefix)) == prefix
+}
+
+f3 <- function(x, y) {
+  rep(y, length.out = length(x))
+}
+
+f3(c("x","y","z"),"A")
+
+### 19.4 conditional execution
+has_name <- function(x) {
+  nms <- names(x)
+  if (is.null(nms)) {
+    rep(FALSE, length(x))
+  } else {
+    !is.na(nms) & nms != ""
+  }
+}
+has_name(df)
+
+ft <- function (x, y, op) {
+  switch(op, plus = x + y, minus = x - y, times = x * y, divide = x/y,
+         stop("Unknown op!"))
+}
+
+ft(2,3,"minus")
